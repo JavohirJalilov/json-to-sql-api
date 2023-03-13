@@ -172,3 +172,22 @@ def get_products_by_price(request: HttpRequest, price: str):
         result.append(product.to_dict())
 
     return JsonResponse(result, safe=False)
+
+def get_product_in_range(request: HttpRequest, mn, mx):
+    products = SmartPhone.objects.filter(price__gte=float(mn), price__lte=float(mx))
+
+    result = []
+    for product in products:
+        result.append(product.to_dict())
+
+    return JsonResponse(result, safe=False)
+
+def get_product_models(request: HttpRequest) -> JsonResponse:
+    models = request.GET.getlist('model')
+
+    products = SmartPhone.objects.filter(model__in=models)
+    result = []
+    for product in products:
+        result.append(product.to_dict())
+
+    return JsonResponse(result, safe=False)
