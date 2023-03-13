@@ -31,7 +31,7 @@ urlpatterns = [
     path('get/<int:pk>', get_product),
     path('del/<int:pk>', delete_product),
     path('update/<int:pk>', update_product),
-    path('get/<str:model>/<int:ram>', get_products_by_model),
+    path('get/<str:model>', get_products_by_model),
     path('price/<str:price>', get_products_by_price),
     path('price_range/<str:mn>/<str:mx>', get_product_in_range),
     path('get_models/', get_product_models)
